@@ -1,16 +1,17 @@
+import ImageGallery from './ImageGallery';
+import Loader from './Loader';
+import Searchbar from './Searchbar';
+import Modal from './Modal';
+import Button from './Button';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div className="App">
+      <Searchbar />
+      <ImageGallery />
+      <Loader />
+      <Button />
+      {/* <Modal /> */}
     </div>
   );
 };

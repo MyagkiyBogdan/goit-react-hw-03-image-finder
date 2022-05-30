@@ -1,13 +1,15 @@
+import styles from './Searchbar.module.css';
+
 function Searchbar() {
   return (
-    <header class="searchbar">
-      <form class="form">
-        <button type="submit" class="button">
-          <span class="button-label">Search</span>
+    <header className={styles.Searchbar}>
+      <form className={styles.SearchForm}>
+        <button type="submit" className={styles.SearchFormButton}>
+          <span className={styles.SearchFormButtonLabel}>Search</span>
         </button>
 
         <input
-          class="input"
+          className={styles.SearchFormInput}
           type="text"
           autocomplete="off"
           autofocus
