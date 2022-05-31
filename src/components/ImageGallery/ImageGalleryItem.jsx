@@ -1,9 +1,13 @@
 import styles from './ImageGalleryItem.module.css';
 
-function ImageGalleryItem() {
+function ImageGalleryItem({ id, webformatURL, largeImageURL, tags }) {
   return (
     <li className={styles.ImageGalleryItem}>
-      <img src="" alt="" className={styles.ImageGalleryItemImage} />
+      <img
+        src={webformatURL}
+        alt={tags}
+        className={styles.ImageGalleryItemImage}
+      />
     </li>
   );
 }
