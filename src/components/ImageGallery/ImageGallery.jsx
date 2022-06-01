@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
+import { Component } from 'react';
+import styles from './ImageGallery.module.css';
 import ImageGalleryItem from './ImageGalleryItem';
 import Button from '../Button';
-import styles from './ImageGallery.module.css';
-import { Component } from 'react';
 import Loader from 'components/Loader';
 import imagesAPI from '../../services/pixabay-api';
 
@@ -76,6 +77,7 @@ class ImageGallery extends Component {
                   webformatURL={img.webformatURL}
                   largeImageURL={img.largeImageURL}
                   tags={img.tags}
+                  toggleModal={this.props.toggleModal}
                 />
               ))}
           </ul>
@@ -89,5 +91,10 @@ class ImageGallery extends Component {
     }
   }
 }
+
+ImageGallery.propTypes = {
+  searchInfo: PropTypes.string,
+  toggleModal: PropTypes.func.isRequired,
+};
 
 export default ImageGallery;

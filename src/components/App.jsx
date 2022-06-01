@@ -9,6 +9,19 @@ import React, { Component } from 'react';
 export class App extends Component {
   state = {
     searchInfo: '',
+    showModal: false,
+    modalSrc: '',
+    modalAlt: '',
+  };
+
+  toggleModal = (src, alt) => {
+    this.setState(prevState => {
+      return {
+        showModal: !prevState.showModal,
+        modalSrc: src,
+        modalAlt: alt,
+      };
+    });
   };
 
   handleFormSubmit = searchInfo => {
@@ -16,17 +29,18 @@ export class App extends Component {
   };
 
   render() {
+    const { searchInfo, showModal, modalSrc, modalAlt } = this.state;
     return (
       <div className="App">
         <Searchbar onSubmit={this.handleFormSubmit} />
-        <ImageGallery searchInfo={this.state.searchInfo} />
-        {/* <Modal /> */}
+        <ImageGallery searchInfo={searchInfo} toggleModal={this.toggleModal} />
+        {showModal && (
+          <Modal src={modalSrc} alt={modalAlt} toggleModal={this.toggleModal} />
+        )}
         <ToastContainer autoClose={2500} />
       </div>
     );
   }
 }
 
-// Загрузку Loader пока идет подгрузка по кнопке load more
 // Сделать модалку и открытие больших изображений
-// Сделать проп тайпы
