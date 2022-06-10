@@ -18,8 +18,6 @@ class ImageGallery extends Component {
     status: 'idle',
   };
 
-  page = 1;
-
   componentDidUpdate(prevProps, prevState) {
     this.page = 1;
 
