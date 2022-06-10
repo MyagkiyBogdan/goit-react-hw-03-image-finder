@@ -6,17 +6,6 @@ import Button from '../Button';
 import Loader from 'components/Loader';
 import imagesAPI from '../../services/pixabay-api';
 
-function smoothScrolling() {
-  const { height: cardHeight } = document
-    .querySelector('#root')
-    .firstElementChild.getBoundingClientRect();
-
-  window.scrollBy({
-    top: cardHeight * 0.425,
-    behavior: 'smooth',
-  });
-}
-
 class ImageGallery extends Component {
   // idle
   // pending
@@ -31,12 +20,9 @@ class ImageGallery extends Component {
 
   page = 1;
 
-  // Для того что бы страница не уезжала после первого рендера
-  renderCount = 0;
-
   componentDidUpdate(prevProps, prevState) {
     this.page = 1;
-    this.renderCount += 1;
+
     if (prevProps.searchInfo !== this.props.searchInfo) {
       // Что бы при новом фетче страница тоже не уезжала сбрасываем каунтер
       this.renderCount = 0;
@@ -48,10 +34,6 @@ class ImageGallery extends Component {
           this.setState({ images: images.hits, status: 'resolved' })
         )
         .catch(error => this.setState({ error, status: 'rejected' }));
-    }
-
-    if (this.renderCount > 2) {
-      smoothScrolling();
     }
   }
 

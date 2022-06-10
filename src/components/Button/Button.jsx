@@ -4,6 +4,17 @@ import imagesAPI from '../../services/pixabay-api';
 import PropTypes from 'prop-types';
 import Loader from '../Loader';
 
+function smoothScrolling() {
+  const { height: cardHeight } = document
+    .querySelector('#root')
+    .firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 0.425,
+    behavior: 'smooth',
+  });
+}
+
 class Button extends Component {
   page = this.props.page;
 
@@ -39,7 +50,10 @@ class Button extends Component {
         <button
           type="button"
           className={styles.Button}
-          onClick={() => this.props.moreImgs(this.handleClickFetchMore())}
+          onClick={() => {
+            setTimeout(() => smoothScrolling(), 300);
+            return this.props.moreImgs(this.handleClickFetchMore());
+          }}
         >
           Load more
         </button>
